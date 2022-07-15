@@ -23,7 +23,8 @@ class TestAlgo:
         sys.stdin = old_stdin
 
         print()
-        print(f'OUT  >>> \n{actual_output_str}')
+        print(f'OUTPUT    >>> \n{actual_output_str}')
+        print(f'EXPECTED  >>> \n{output_str}')
         print(f'TIME >>> {runtime:.5f}s')
 
         assert actual_output_str == output_str
