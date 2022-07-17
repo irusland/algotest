@@ -13,18 +13,20 @@ class TestAlgo:
         sys.stdout = StringIO()
 
         a = time.perf_counter()
-        main()
-        runtime = time.perf_counter() - a
+        try:
+            main()
+        finally:
+            runtime = time.perf_counter() - a
 
-        actual_output_str = sys.stdout.getvalue()
-        sys.stdout.close()
-        sys.stdout = backup
-        sys.stdin.close()
-        sys.stdin = old_stdin
+            actual_output_str = sys.stdout.getvalue()
+            sys.stdout.close()
+            sys.stdout = backup
+            sys.stdin.close()
+            sys.stdin = old_stdin
 
-        print()
-        print(f'OUTPUT    >>> \n{actual_output_str}')
-        print(f'EXPECTED  >>> \n{output_str}')
-        print(f'TIME >>> {runtime:.5f}s')
+            print()
+            print(f'OUTPUT    >>> \n{actual_output_str}')
+            print(f'EXPECTED  >>> \n{output_str}')
+            print(f'TIME >>> {runtime:.5f}s')
 
         assert actual_output_str == output_str
