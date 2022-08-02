@@ -2,11 +2,11 @@ import sys
 import time
 from io import StringIO
 
-from .main import main
+from script import main
 
 
 class TestAlgo:
-    def test_algo(self, input_str, output_str):
+    def test_algo(self, test_name, input_str, output_str):
         old_stdin = sys.stdin
         sys.stdin = StringIO(str(input_str))
         backup = sys.stdout
